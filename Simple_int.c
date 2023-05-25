@@ -1,48 +1,49 @@
 #include "MY_shell.h"
 /**
- * inter_collabo - Creates a loop that execute command lines entered by tty
- * @av: argument from main
+ * inter_collabo - This creates a loop that execute c
+ * ommand lines entered by tty in this code
+ * @av: its arg from main
  * Return: Exit / Error Code
 */
 int inter_collabo(char **av __attribute__((unused)))
 {
-	size_t bufsiz;
-	char *buffer = NULL;
-	char **env_args = NULL;
-	char **user_command = NULL;
-	char *full_command = NULL;
-	int (*b_func)() = NULL;
+	size_t faster;
+	char *pathing = NULL;
+	char **env_ = NULL;
+	char **man_d = NULL;
+	char *kim = NULL;
+	int (*func)() = NULL;
 
 	while (1)
 	{
 		write(STDOUT_FILENO, "($) ", 4);
-		getline(&buffer, &bufsiz, stdin);
-		sim_getline(buffer, 0, user_command, env_args);
-		if (buffer[0] == 10 || buffer[0] == 9)
+		getline(&pathing, &faster, stdin);
+		sim_getline(pathing, 0, man_d, env_);
+		if (pathing[0] == 10 || pathing[0] == 9)
 			continue;
-		user_command = args_arguments(buffer);
-		if (user_command == NULL)
+		man_d = args_arguments(pathing);
+		if (man_d == NULL)
 			continue;
-		b_func = handle_builtin(*user_command);
-		if (b_func)
+		func = handle_builtin(*man_d);
+		if (func)
 		{
-			if (b_func == exiting_function)
-				free_all(user_command, env_args, buffer, NULL);
-			b_func();
-			free_all(user_command, NULL, NULL, NULL);
+			if (func == exiting_function)
+				free_all(man_d, env_, pathing, NULL);
+			func();
+			free_all(man_d, NULL, NULL, NULL);
 			continue;
 		}
-		env_args = getenvpath();
-		if (env_args == NULL)
+		env_ = getenvpath();
+		if (env_ == NULL)
 			return (-1);
-		full_command = _insert_path(user_command, env_args);
-		if (full_command == NULL)
+		kim = _insert_path(man_d, env_);
+		if (kim == NULL)
 			write(STDOUT_FILENO, "command NOT found\n", 18);
 		else
-			execute_exe(full_command, user_command);
-		free_freely(1, buffer), buffer = NULL;
-		free_freely(2, user_command), user_command = NULL;
-		free_freely(2, env_args), env_args = NULL;
+			execute_exe(kim, man_d);
+		free_freely(1, pathing), pathing = NULL;
+		free_freely(2, man_d), man_d = NULL;
+		free_freely(2, env_), env_ = NULL;
 	}
 	return (0);
 }

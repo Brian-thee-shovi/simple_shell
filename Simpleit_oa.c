@@ -1,57 +1,57 @@
 #include "MY_shell.h"
 /**
- * l_number - length of number
- * @n: int
- * Return: length
+ * l_number - LENgth of number in this code
+ * @n: intiger
+ * Return: length,
  */
 int l_number(int n)
 {
-	int len = 0;
+	int height = 0;
 
 	while (n / 10 != 0)
 	{
-		len++;
+		height++;
 		n /= 10;
 	}
-	return (len);
+	return (height);
 }
 
 /**
- * int_charac_ter - convert to string
- * @num: integer to be printed
- * Return: string
+ * int_charac_ter - this func convert to str in my code
+ * @num: int to be printed out
+ * Return: a String
  */
 
 char *int_charac_ter(int num)
 {
-	int digit = 0;
-	int i = 0;
-	char *str;
+	int in = 0;
+	int gin = 0;
+	char *string;
 	int divisor = 1000000000;
-	int len = l_number(num);
+	int tric = l_number(num);
 
-	str = malloc(len * sizeof(char) + 1);
-	if (!str)
+	string = malloc(tric * sizeof(char) + 1);
+	if (!string)
 		return (NULL);
 
 	if (num < 10)
 	{
-		str[i++] = num + '0';
-		str[i] = '\0';
-		return (str);
+		string[gin++] = num + '0';
+		string[gin] = '\0';
+		return (string);
 	}
 
 	while (divisor)
 	{
-		digit = (num / divisor) % 10;
-		if (digit != 0 || (len >= 0 && str[i - 1] >= '0'))
+		in = (num / divisor) % 10;
+		if (in != 0 || (tric >= 0 && string[gin - 1] >= '0'))
 		{
-			str[i] = digit + '0';
-			i++;
-			len--;
+			string[gin] = in + '0';
+			gin++;
+			tric--;
 		}
 		divisor /= 10;
 	}
-	str[i] = '\0';
-	return (str);
+	string[gin] = '\0';
+	return (string);
 }
