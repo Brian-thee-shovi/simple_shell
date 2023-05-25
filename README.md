@@ -1,2 +1,1 @@
-# simple_shell
-my repo 
+simple shell two project
