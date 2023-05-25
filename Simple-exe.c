@@ -1,9 +1,10 @@
 #include "MY_shell.h"
+
 /**
- * execute_exe - Executes a given command
- * @command: Given command
- * @args: command arguments
- * Return: Exit = 0 or Error Number
+ * execute_exe - It executes a given command
+ * @command: It is a given command
+ * @args: it is a command arguments
+ * Return: It exits = 0 or the error Number
 */
 int execute_exe(char *command, char **args)
 {
