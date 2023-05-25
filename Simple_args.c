@@ -1,21 +1,21 @@
 #include "MY_shell.h"
 /**
- * args_arguments - executes command lines entered by pipe
- * @buffer: command name
+ * args_arguments - this executes command lines entered by PIPE
+ * @buffer: command name IN THIS CODE
  * Return: 0
 */
 char **args_arguments(char *buffer)
 {
-	int size = 0;
-	char **user_command = NULL;
+	int kim = 0;
+	char **man_d = NULL;
 
 	size = pearl_used(buffer);
-	user_command = pars_given(buffer, size);
-	if (user_command == NULL)
+	man_d = pars_given(buffer, kim);
+	if (mman_d == NULL)
 	{
-		free_freely(2, user_command);
-		user_command = NULL;
+		free_freely(2, man_d);
+		man_d = NULL;
 	}
 
-	return (user_command);
+	return (man_d);
 }
