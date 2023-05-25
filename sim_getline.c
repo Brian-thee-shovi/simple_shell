@@ -1,10 +1,10 @@
 #include "MY_shell.h"
 /**
- *sim_getline - executes command lines entered by pipe
- * @buffer: program name
- * @len: length buffer
+ *sim_getline - it EXEcutes command lines entered by PIPE
+ * @buffer: program NAME
+ * @len: length buffer IN this code
  * @args: Argument 1
- * @env_args: Enviroment arguments
+ * @env_args: Env arg in this code
  * Return: 0
 */
 void sim_getline(char *buffer, int len, char **args, char **env_args)
