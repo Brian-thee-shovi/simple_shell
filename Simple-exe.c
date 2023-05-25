@@ -8,33 +8,33 @@
 */
 int execute_exe(char *command, char **args)
 {
-	int status;
-	pid_t pid;
-	int errcode = 0;
+	int stat;
+	pid_t pidin;
+	int errorcode = 0;
 
-	pid = fork();
-	if (!pid)
+	pidin = fork();
+	if (!pidin)
 	{
 		if (execve(command, args, environ) == -1)
 		{
 			free_freely(1, command);
 			command = NULL;
-			errcode = errno;
+			errorcode = errno;
 			error_message(args);
-			exit(errcode);
+			exit(errorcode);
 		}
 		else
 		{
 			free_freely(1, command);
 			command = NULL;
-			exit(errcode);
+			exit(errorcode);
 		}
 	}
 	else
-		wait(&status);
+		wait(&stat);
 
 	free_freely(1, command);
 	command = NULL;
-	errcode = 0;
-	return (errcode);
+	errorcode = 0;
+	return (errorcode);
 }
