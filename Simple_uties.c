@@ -1,7 +1,7 @@
 #include "MY_shell.h"
 
 /**
- * size_comp - Compares two strings with n size
+ * size_comp - It compares 2 strings with n size
  * @s1: Given String 1
  * @s2: Given String 2
  * @n: Size to character compare
@@ -26,83 +26,83 @@ int size_comp(char *s1,  char *s2, size_t n)
 }
 
 /**
- * length_string - Funtion that returns length of a given string
- * @s: Given string
+ * length_string - The func that returns length of a given string
+ * @s: string given
  * Return: number of elements
 */
 int length_string(char *s)
 {
-	int len;
+	int leng;
 
-	for (len = 0; s[len] != '\0'; len++)
+	for (leng = 0; s[leng] != '\0'; leng++)
 		;
-	return (len);
+	return (leng);
 }
 
 /**
- * dup_string - Duplicates a given string
+ * dup_string - it duplicates a given string
  * @s: given string
  * Return: Copy of given string
 */
 char *dup_string(char *s)
 {
-	char *ptr;
-	int i, len;
+	char *pointer;
+	int a, leng;
 
-	len = 0;
+	leng = 0;
 	if (s == NULL)
 		return (NULL);
-	len = length_string(s);
-	ptr = malloc(sizeof(char) * (len + 1));
-	if (ptr == NULL)
+	leng = length_string(s);
+	pointer = malloc(sizeof(char) * (leng + 1));
+	if (pointer == NULL)
 		return (NULL);
-	for (i = 0; i < len; i++)
-		ptr[i] = s[i];
-	ptr[i] = '\0';
-	return (ptr);
+	for (a = 0; a < leng; a++)
+		pointer[a] = s[a];
+	pointer[a] = '\0';
+	return (pointer);
 }
 
 /**
- * comp_str - Compares two given  strings
- * @s1: Given S1 String
- * @s2: Given S2 String
+ * comp_str - it compares 2 given  strings
+ * @s1: String 1
+ * @s2: String 2
  * Return: 0 if both are equals or ascii diff
 */
 int comp_str(char *s1, char *s2)
 {
-	int diff, index;
+	int differ, indexin;
 
-	diff = index = 0;
+	differ = indexin = 0;
 	if (s1 == NULL || s2 == NULL)
 		return (-1);
-	while (s1[index] != '\0' && s2[index] != '\0')
+	while (s1[indexin] != '\0' && s2[indexin] != '\0')
 	{
-		diff = s1[index] - s2[index];
-		if (diff != 0)
+		differ = s1[indexin] - s2[indexin];
+		if (differ != 0)
 			break;
-		index++;
+		indexin++;
 	}
-	return (diff);
+	return (differ);
 }
 
 /**
- *str_str - concatenates two strings.
+ *str_str - concentrates two strings.
  *@dest: destiny string
  *@src: source string
  *Return: dest
  */
 char *str_str(char *dest, char *src)
 {
-	int n, i;
+	int p, a;
 
-	for (n = 0; dest[n] != '\0'; n++)
+	for (p = 0; dest[p] != '\0'; p++)
 	{
 	}
-	for (i = 0; src[i] != '\0'; i++)
+	for (a = 0; src[a] != '\0'; a++)
 	{
-		dest[n + i] = src[i];
+		dest[p + a] = src[a];
 	}
-	dest[n + i] = '\0';
+	dest[p + a] = '\0';
 
 	return (dest);
 }
