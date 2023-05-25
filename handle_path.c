@@ -8,19 +8,19 @@
 char *find_paths()
 {
 	char *var = NULL;
-	int j = 0;
+	int m = 0;
 
-	for (j = 0; environ[j] != NULL; j++)
+	for (m = 0; environ[m] != NULL; m++)
 	{
-		if (comp_str(environ[j], "PATH") == 0)
+		if (comp_str(environ[m], "PATH") == 0)
 		{
-			var = malloc(sizeof(char *) * (length_string(environ[j])));
+			var = malloc(sizeof(char *) * (length_string(environ[m])));
 			if (var == NULL)
 			{
 				free_freely(1, var);
 				exit(-1);
 			}
-			string_copy(var, environ[j]);
+		string_copy(var, environ[m]);
 			break;
 		}
 	}
@@ -36,16 +36,16 @@ char *find_paths()
 void changes_to_char(char *str)
 {
 	char **_string = NULL;
-	int k = 0;
+	int l = 0;
 
 	_string = &str;
 
-	while ((*(*_string + k)) != '=')
+	while ((*(*_string + l)) != '=')
 	{
-		(*(*_string + k)) = ':';
-		k++;
+		(*(*_string + l)) = ':';
+		l++;
 	}
-	(*(*_string + k)) = ':';
+	(*(*_string + l)) = ':';
 }
 
 /**
@@ -106,16 +106,16 @@ char *_insert_path(char **args, char **path)
 
 char **getenvpath()
 {
-	char *t = NULL;
+	char *u = NULL;
 	int max = 0;
 	char **me;
 
-	t = find_paths();
-	changes_to_char(t); /*Change  PATH= for PATH:*/
-	max = pearl_used(t);
-	me = pars_given(t, max);
-	free_freely(1, t);
-	t =  NULL;
+	u = find_paths();
+	changes_to_char(u); /*Change  PATH= for PATH:*/
+	max = pearl_used(u);
+	me = pars_given(u, max);
+	free_freely(1, u);
+	u =  NULL;
 	return (me);
 }
 
@@ -127,15 +127,15 @@ char **getenvpath()
 
 int buff_bust(char *buffer)
 {
-	int k = 0;
+	int l = 0;
 
-	while (buffer[k] != '\0')
+	while (buffer[l] != '\0')
 	{
-		if (buffer[k] != 32)
+		if (buffer[l] != 32)
 		{
 			return (0);
 		}
-	k++;
+	l++;
 	}
 	return (1);
 }
