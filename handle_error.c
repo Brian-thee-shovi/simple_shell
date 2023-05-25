@@ -1,20 +1,21 @@
 #include "MY_shell.h"
 /**
- * error_message - writes error depending on the error number
- * @args: given command to execute
- * Return: Nothing
+ * error_message - prints error depending
+ * on the error num in this code
+ * @args: given command to execute in this code
+ * Return: returns nil
 */
 void error_message(char **args)
 {
-	int loop = 1;
-	char *hsh_home = "";
+	int len = 1;
+	char *terminal = "";
 	char *error_message = malloc(sizeof(char) * 255);
-	char *looper = NULL;
+	char *ask = NULL;
 
-	looper = int_charac_ter(loop);
-	error_message = dup_string(hsh_home);
+	ask = int_charac_ter(len);
+	error_message = dup_string(terminal);
 	error_message = str_str(error_message, ": ");
-	error_message = str_str(error_message, looper);
+	error_message = str_str(error_message, ask);
 	error_message = str_str(error_message, ": ");
 	error_message = str_str(error_message, args[0]);
 	perror(error_message);
@@ -22,10 +23,11 @@ void error_message(char **args)
 }
 
 /**
- * error_notgood - writes error depending on the error number
- * @args: given command to execute
- * @buffer: given command to execute
- * Return: Nothing
+ * error_notgood - prints error depending on the error
+ * num in this code
+ * @args: command to execute in this code
+ * @buffer: given command to execute in this code
+ * Return: returns nothing
 */
 void error_notgood(char **args, char *buffer)
 {
