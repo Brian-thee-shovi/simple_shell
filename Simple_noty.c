@@ -1,33 +1,34 @@
 #include "MY_shell.h"
+
 /**
- * entered_nty - executes command lines entered by pipe
- * @av: program name
+ * entered_nty - It executes the command lines entered by pipe
+ * @av: program The programs name
  * Return: 0
 */
 int entered_nty(char **av __attribute__((unused)))
 {
-	size_t bufsiz;
-	int len = 0;
+	size_t bufsizes;
+	int length = 0;
 	char *buffer = NULL;
 	char **env_args = NULL;
 	char **user_command = NULL;
 	char *full_command = NULL;
-	int (*b_func)() = NULL;
+	int (*c_func)() = NULL;
 
-	while ((len = getline(&buffer, &bufsiz, stdin)) > 0)
+	while ((length = getline(&buffer, &bufsizes, stdin)) > 0)
 	{
-		sim_getline(buffer, len, user_command, env_args);
+		sim_getline(buffer, length, user_command, env_args);
 		if (buffer[0] == 10 || buffer[0] == 9)
 			continue;
 		user_command = args_arguments(buffer);
 		if (user_command == NULL)
 			continue;
-		b_func = handle_builtin(*user_command);
-		if (b_func)
+		c_func = handle_builtin(*user_command);
+		if (c_func)
 		{
-			if (b_func == exiting_function)
+			if (c_func == exiting_function)
 				free_all(user_command, env_args, buffer, NULL);
-			b_func();
+			c_func();
 			free_all(user_command, NULL, NULL, NULL);
 			continue;
 		}
