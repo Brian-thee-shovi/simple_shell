@@ -1,141 +1,141 @@
 #include "MY_shell.h"
 
 /**
- * find_paths - Finds the PATH variable from enviroment
- * Return: pointer position of the PATH variable
+ * find_paths - it finds the path variable from env in this code
+ * Return: Its the pointer position of path var
 */
 
 char *find_paths()
 {
-	char *path = NULL;
-	int i = 0;
+	char *var = NULL;
+	int j = 0;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (j = 0; environ[j] != NULL; j++)
 	{
-		if (comp_str(environ[i], "PATH") == 0)
+		if (comp_str(environ[j], "PATH") == 0)
 		{
-			path = malloc(sizeof(char *) * (length_string(environ[i])));
-			if (path == NULL)
+			var = malloc(sizeof(char *) * (length_string(environ[j])));
+			if (var == NULL)
 			{
-				free_freely(1, path);
+				free_freely(1, var);
 				exit(-1);
 			}
-			string_copy(path, environ[i]);
+			string_copy(var, environ[j]);
 			break;
 		}
 	}
-	return (path);
+	return (var);
 }
 
 /**
- * changes_to_char - Change from a given strings = to : character
- * @str: given string
- * Return: Nohing
+ * changes_to_char - It changes a given strings = to : char
+ * @str: given string in this code
+ * Return:returns nothing
 */
 
 void changes_to_char(char *str)
 {
-	char **ptr_str = NULL;
-	int i = 0;
+	char **_string = NULL;
+	int k = 0;
 
-	ptr_str = &str;
+	_string = &str;
 
-	while ((*(*ptr_str + i)) != '=')
+	while ((*(*_string + k)) != '=')
 	{
-		(*(*ptr_str + i)) = ':';
-		i++;
+		(*(*_string + k)) = ':';
+		k++;
 	}
-	(*(*ptr_str + i)) = ':';
+	(*(*_string + k)) = ':';
 }
 
 /**
- * _insert_path - Inserts the directory into given command
- * @args: given command
- * @path: tokenized path enviroment
- * Return: Full path command if exists or just a given command
+ * _insert_path - IT Inserts the dir into  command in this code
+ * @args: given command in this code
+ * @path: tokenized path env in my code
+ * Return: a full Path cmd if exists or just a given cmd
 */
 
 char *_insert_path(char **args, char **path)
 {
-	char *cwd = getcwd(NULL, 0);
+	char *yip = getcwd(NULL, 0);
 	struct stat verify;
-	int counter = 0;
-	int count_char = 0;
-	char *tmp2 = NULL;
-	char *dirpath = NULL;
+	int cant = 0;
+	int t_char = 0;
+	char *ret = NULL;
+	char *pat_h = NULL;
 
 	if (string_str(args[0], "/") || string_str(args[0], "."))
 	{
-		free_freely(1, cwd);
-		cwd = NULL;
-		tmp2 = malloc(sizeof(char *) * (length_string(args[0])));
-		string_copy(tmp2, args[0]);
-		return (tmp2);
+		free_freely(1, yip);
+		yip = NULL;
+		ret = malloc(sizeof(char *) * (length_string(args[0])));
+		string_copy(ret, args[0]);
+		return (ret);
 	}
 	else
 	{
-		while (path[counter] != NULL)
+		while (path[cant] != NULL)
 		{
-			chdir(path[counter]);
+			chdir(path[cant]);
 			if (stat(args[0], &verify) == 0)
 			{
-				count_char = length_string(path[counter]) + 1 + length_string(args[0]);
-				tmp2 = malloc(sizeof(char *) * count_char);
-				string_copy(tmp2, path[counter]);
-				str_str(tmp2, "/"), str_str(tmp2, args[0]);
+				t_char = length_string(path[cant]) + 1 + length_string(args[0]);
+				ret = malloc(sizeof(char *) * t_char);
+				string_copy(ret, path[cant]);
+				str_str(ret, "/"), str_str(ret, args[0]);
 				break;
 			}
-			counter++;
+			cant++;
 		}
 	}
-	chdir(cwd);
-	if (tmp2 == NULL)
+	chdir(yip);
+	if (ret == NULL)
 	{
-		free_freely(1, cwd), cwd = NULL;
-		free_freely(1, tmp2), tmp2 = NULL;
-		return (dirpath);
+		free_freely(1, yip), yip = NULL;
+		free_freely(1, ret), ret = NULL;
+		return (pat_h);
 	}
-	dirpath = tmp2, free_freely(1, cwd), cwd = NULL;
-	return (dirpath);
+	pat_h = ret, free_freely(1, yip), yip = NULL;
+	return (pat_h);
 }
 
 /**
- * getenvpath - Creates an array of pointers to the PATH directories
- * Return: Pointer to an array of tokenized directories
+ * getenvpath - It creates an arr of pointers to pathof dir
+ * Return: its aPointer to an arr of tokenized dir
 */
 
 char **getenvpath()
 {
-	char *tmp = NULL;
-	int size_args = 0;
-	char **env_args;
+	char *t = NULL;
+	int max = 0;
+	char **me;
 
-	tmp = find_paths();
-	changes_to_char(tmp); /*Change  PATH= for PATH:*/
-	size_args = pearl_used(tmp);
-	env_args = pars_given(tmp, size_args);
-	free_freely(1, tmp);
-	tmp =  NULL;
-	return (env_args);
+	t = find_paths();
+	changes_to_char(t); /*Change  PATH= for PATH:*/
+	max = pearl_used(t);
+	me = pars_given(t, max);
+	free_freely(1, t);
+	t =  NULL;
+	return (me);
 }
 
 /**
- * buff_bust - Creates an array of pointers to the PATH directories
- * @buffer: given string
- * Return: Pointer to an array of tokenized directories
+ * buff_bust - creates an arr of pointers to the path dir
+ * @buffer: given string in this code
+ * Return: its a pointer to an arr of tokenized dir
 */
 
 int buff_bust(char *buffer)
 {
-	int i = 0;
+	int k = 0;
 
-	while (buffer[i] != '\0')
+	while (buffer[k] != '\0')
 	{
-		if (buffer[i] != 32)
+		if (buffer[k] != 32)
 		{
 			return (0);
 		}
-	i++;
+	k++;
 	}
 	return (1);
 }
