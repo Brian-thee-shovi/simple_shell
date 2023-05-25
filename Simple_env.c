@@ -1,18 +1,19 @@
 #include "MY_shell.h"
+
 /**
- * envy_function - Prints eviroment variables
- * Return: 0 on success
+ * envy_function - It prints an eviroment variables
+ * Return: on success 0
 */
 int envy_function(void)
 {
-	int counter = 0, lenght = 0;
+	int count = 0, leng = 0;
 
-	while (environ[counter] != NULL)
+	while (environ[count] != NULL)
 	{
-		lenght = length_string(environ[counter]);
-		write(STDOUT_FILENO, environ[counter], lenght);
+		leng = length_string(environ[count]);
+		write(STDOUT_FILENO, environ[count], leng);
 		write(STDOUT_FILENO, "\n", 1);
-		counter++;
+		count++;
 	}
 	return (0);
 }
