@@ -4,6 +4,7 @@
  * entered_nty - It executes the command lines entered by pipe
  * @av: program The programs name
  * Return: 0
+ * author:Brian and joy
 */
 int entered_nty(char **av __attribute__((unused)))
 {

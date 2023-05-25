@@ -2,7 +2,7 @@
 /**
  * inter_collabo - This creates a loop that execute c
  * ommand lines entered by tty in this code
- * @av: its arg from main
+ * @av: its arg from main in this code
  * Return: Exit / Error Code
 */
 int inter_collabo(char **av __attribute__((unused)))
