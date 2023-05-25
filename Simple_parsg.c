@@ -1,61 +1,62 @@
 #include "MY_shell.h"
+
 /**
- * pearl_used - counts commands and options entered by user
- * @buffer: given command
- * Return: Number of arguments
+ * pearl_used - It counts the commands and options entered by user
+ * @buffer:  command given
+ * Return: Number of the arguments
 */
 int pearl_used(char *buffer)
 {
-	int pearls = 0;
-	char *delimiter = " =:'\n''\t'";
-	int i = 0;
-	int j = 0;
+	int pearlins = 0;
+	char *delim = " =:'\n''\t'";
+	int d = 0;
+	int f = 0;
 
-	while (buffer[i] != '\0')
+	while (buffer[d] != '\0')
 	{
-		for (j = 0; delimiter[j] != '\0'; j++)
+		for (f = 0; delim[f] != '\0'; f++)
 		{
-			if (buffer[i] == delimiter[j])
+			if (buffer[d] == delim[f])
 			{
-				pearls++;
+				pearlins++;
 				break;
 			}
 		}
-		i++;
+		d++;
 	}
-	return (pearls + 1);
+	return (pearlins + 1);
 }
 
 /**
- * pars_given - Function that splits a given string
- * @buffer: Given string
- * @characters: number of elements
+ * pars_given - Funct that splits a given string
+ * @buffer: string given
+ * @characters: number of the elements
  * Return: Tokenized string
 */
 
 char **pars_given(char *buffer, int characters)
 {
-	int counter = 0;
-	char *token = NULL;
-	char *delimiter = " :'\n''\t'";
-	char **token_necklace = malloc(sizeof(char *) * characters);
+	int count = 0;
+	char *tokenz = NULL;
+	char *delim = " :'\n''\t'";
+	char **tokenz_necklace = malloc(sizeof(char *) * characters);
 
-	if (token_necklace == NULL)
+	if (tokenz_necklace == NULL)
 	{
 		return (NULL);
 	}
-	token = strtok(buffer, delimiter);
-	while (token != NULL)
+	tokenz = strtok(buffer, delim);
+	while (tokenz != NULL)
 	{
-		token_necklace[counter] = dup_string(token);
-		if (token_necklace[counter] == NULL)
+		tokenz_necklace[count] = dup_string(tokenz);
+		if (tokenz_necklace[count] == NULL)
 		{
-			free_freely(2, token_necklace);
+			free_freely(2, tokenz_necklace);
 			return (NULL);
 		}
-		token = strtok(NULL, delimiter);
-		counter++;
+		tokenz = strtok(NULL, delim);
+		count++;
 	}
-	token_necklace[counter] = NULL;
-	return (token_necklace);
+	tokenz_necklace[count] = NULL;
+	return (tokenz_necklace);
 }
