@@ -9,9 +9,9 @@ char **args_arguments(char *buffer)
 	int kim = 0;
 	char **man_d = NULL;
 
-	size = pearl_used(buffer);
+	kim = pearl_used(buffer);
 	man_d = pars_given(buffer, kim);
-	if (mman_d == NULL)
+	if (man_d == NULL)
 	{
 		free_freely(2, man_d);
 		man_d = NULL;
