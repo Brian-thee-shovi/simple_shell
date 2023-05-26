@@ -10,41 +10,41 @@ int entered_nty(char **av __attribute__((unused)))
 {
 	size_t bufsizes;
 	int length = 0;
-	char *buffer = NULL;
-	char **env_args = NULL;
-	char **user_command = NULL;
-	char *full_command = NULL;
-	int (*c_func)() = NULL;
+	char *b = NULL;
+	char **args = NULL;
+	char **user_ = NULL;
+	char *full_c = NULL;
+	int (*b_func)() = NULL;
 
-	while ((length = getline(&buffer, &bufsizes, stdin)) > 0)
+	while ((length = getline(&b, &bufsizes, stdin)) > 0)
 	{
-		sim_getline(buffer, length, user_command, env_args);
-		if (buffer[0] == 10 || buffer[0] == 9)
+		sim_getline(b, length, user_, args);
+		if (b[0] == 10 || b[0] == 9)
 			continue;
-		user_command = args_arguments(buffer);
-		if (user_command == NULL)
+		user_ = args_arguments(b);
+		if (user_ == NULL)
 			continue;
-		c_func = handle_builtin(*user_command);
-		if (c_func)
+		b_func = handle_builtin(*user_);
+		if (b_func)
 		{
-			if (c_func == exiting_function)
-				free_all(user_command, env_args, buffer, NULL);
-			c_func();
-			free_all(user_command, NULL, NULL, NULL);
+			if (b_func == exiting_function)
+				free_all(user_, args, buffer, NULL);
+			b_func();
+			free_all(user_, NULL, NULL, NULL);
 			continue;
 		}
-		env_args = getenvpath();
+		args = getenvpath();
 		if (env_args == NULL)
 			return (-1);
-		full_command = _insert_path(user_command, env_args);
-		if (full_command == NULL)
+		full_c = _insert_path(user_, args);
+		if (full_c == NULL)
 			write(STDOUT_FILENO, "command NOT found\n", 18);
 		else
-			execute_exe(full_command, user_command);
-		free_freely(1, buffer), buffer = NULL;
-		free_freely(2, user_command), user_command = NULL;
-		free_freely(2, env_args), env_args  = NULL;
+			execute_exe(full_c, user_);
+		free_freely(1, b), b = NULL;
+		free_freely(2, user_), user_ = NULL;
+		free_freely(2, args), args  = NULL;
 	}
-	free_freely(1, buffer), buffer = NULL;
+	free_freely(1, b), b = NULL;
 	return (0);
 }
