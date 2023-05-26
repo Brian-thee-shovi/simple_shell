@@ -1,9 +1,9 @@
 #include "MY_shell.h"
 
 /**
- * size_comp - It compares 2 strings with n size
- * @s1: Given String 1
- * @s2: Given String 2
+ * size_comp - It compares 2 strings with n sizes in this code
+ * @s1: Given String 1 in this code
+ * @s2: Given String two in this code
  * @n: Size to character compare
  * Return: 0 both strings are equals
 */
@@ -28,38 +28,38 @@ int size_comp(char *s1,  char *s2, size_t n)
 /**
  * length_string - The func that returns length of a given string
  * @s: string given
- * Return: number of elements
+ * Return: number of elements in this code
 */
 int length_string(char *s)
 {
-	int leng;
+	int l;
 
-	for (leng = 0; s[leng] != '\0'; leng++)
+	for (l = 0; s[l] != '\0'; l++)
 		;
-	return (leng);
+	return (l);
 }
 
 /**
- * dup_string - it duplicates a given string
- * @s: given string
+ * dup_string - it duplicates a string
+ * @s: given string in this code
  * Return: Copy of given string
 */
 char *dup_string(char *s)
 {
-	char *pointer;
-	int a, leng;
+	char *ter;
+	int e, leng;
 
 	leng = 0;
 	if (s == NULL)
 		return (NULL);
 	leng = length_string(s);
-	pointer = malloc(sizeof(char) * (leng + 1));
-	if (pointer == NULL)
+	ter = malloc(sizeof(char) * (leng + 1));
+	if (ter == NULL)
 		return (NULL);
-	for (a = 0; a < leng; a++)
-		pointer[a] = s[a];
-	pointer[a] = '\0';
-	return (pointer);
+	for (e = 0; e < leng; e++)
+		ter[e] = s[e];
+	ter[e] = '\0';
+	return (ter);
 }
 
 /**
@@ -70,25 +70,25 @@ char *dup_string(char *s)
 */
 int comp_str(char *s1, char *s2)
 {
-	int differ, indexin;
+	int fer, indexin;
 
-	differ = indexin = 0;
+	fer = indexin = 0;
 	if (s1 == NULL || s2 == NULL)
 		return (-1);
 	while (s1[indexin] != '\0' && s2[indexin] != '\0')
 	{
-		differ = s1[indexin] - s2[indexin];
-		if (differ != 0)
+		fer = s1[indexin] - s2[indexin];
+		if (fer != 0)
 			break;
 		indexin++;
 	}
-	return (differ);
+	return (fer);
 }
 
 /**
  *str_str - concentrates two strings.
- *@dest: destiny string
- *@src: source string
+ *@dest: destiny string in this code
+ *@src: source string in this code
  *Return: dest
  */
 char *str_str(char *dest, char *src)

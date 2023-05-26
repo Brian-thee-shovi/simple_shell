@@ -1,9 +1,9 @@
 #include "MY_shell.h"
 
 /**
-* free_env -It frees the tokenized PATH directories and user's arguments
-* @env_args: tokenized environmental directories
-* @args: tokenized user's commands
+* free_env -It frees the tokenized path dir and user's arguments
+* @env_args: tokenized env dir
+* @args: tokenized user's cmds
 * Return: nothing
 */
 

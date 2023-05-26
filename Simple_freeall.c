@@ -7,37 +7,38 @@
 
 void free_freely(int n, ...)
 {
-	int i = 0;
-	char **ptr2 = NULL;
-	char *ptr1 = NULL;
+	int k = 0;
+	char **p = NULL;
+	char *t = NULL;
 	va_list arg;
 
 	va_start(arg, n);
 
 	if (n == 1)
 	{
-		ptr1 = va_arg(arg, char *);
-		free(ptr1);
+		t = va_arg(arg, char *);
+		free(t);
 	}
 
 	if (n == 2)
 	{
-		ptr2 = va_arg(arg, char **);
-		while (ptr2[i] != NULL)
+		p = va_arg(arg, char **);
+		while (p[k] != NULL)
 		{
-			free(ptr2[i]);
-			i++;
+			free(p[k]);
+			k++;
 		}
-		free(ptr2);
+		free(p);
 	}
 }
 
 /**
-* free_all - frees tokenized PATH directories and user's arguments
-* @dptr1: first double pointer to free
-* @dptr2: second double pointer to free
-* @sptr1: first single pointer to free
-* @sptr2: second double pointer to free
+* free_all - IT frees tokenized PATH directories and user's
+* arguments
+* @dptr1: first double pointER
+* @dptr2: second double poinTER
+* @sptr1: first single pointER
+* @sptr2: second double pointER
 * Return: nothing
 */
 
