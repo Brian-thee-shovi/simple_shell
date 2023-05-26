@@ -28,13 +28,13 @@ int entered_nty(char **av __attribute__((unused)))
 		if (b_func)
 		{
 			if (b_func == exiting_function)
-				free_all(user_, args, buffer, NULL);
+				free_all(user_, args, b, NULL);
 			b_func();
 			free_all(user_, NULL, NULL, NULL);
 			continue;
 		}
 		args = getenvpath();
-		if (env_args == NULL)
+		if (args == NULL)
 			return (-1);
 		full_c = _insert_path(user_, args);
 		if (full_c == NULL)
