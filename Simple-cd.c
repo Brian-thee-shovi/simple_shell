@@ -70,7 +70,7 @@ void execute_cd(char **args)
 
 	{
 
-		_strcpy(oldpwd, getenv("PWD"));
+		strcpy(oldpwd, getenv("PWD"));
 
 		if (setenv("OLDPWD", oldpwd, 1) == -1)
 
